@@ -1,0 +1,134 @@
+/* General Styles */
+.body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+  }
+  
+  /* Header Styles */
+  .header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  
+  /* Table Container */
+  .container {
+    width: 90%;
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+  
+  /* Table Styles */
+  .rental-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rental-table th, 
+  .rental-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .rental-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+  }
+  
+  .rental-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .rental-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .rental-table td {
+    font-size: 14px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .rental-table td, 
+    .rental-table th {
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+  
+  .view-btn {
+    padding: 8px 16px;
+    background-color: #007bff; /* Primary blue color */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 14px; /* Readable font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  }
+  
+  .view-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+
+  .logout-btn {
+    background-color: #083542;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    float: right;
+  }
+  
+  .logout-btn:hover {
+    background-color: #235dc8;
+  }
+  
+  .floating-button {
+    position: fixed;
+    top: 10px;
+    /* Adjust vertical position */
+    right: 10px;
+    /* Adjust horizontal position */
+    z-index: 1000;
+    /* Ensure the button stays on top */
+    padding: 10px 20px;
+    background-color: #00b7ff;
+    /* Button background color */
+    color: white;
+    /* Text color */
+    border: none;
+    /* Remove default border */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-size: 16px;
+    /* Font size */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Add depth with shadow */
+    transition: background-color 0.3s ease;
+    /* Smooth hover effect */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .floating-button:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+  }

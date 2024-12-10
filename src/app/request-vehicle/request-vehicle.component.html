@@ -1,0 +1,66 @@
+<div id="message-container" *ngIf="message">
+    <p class="fade-message">{{message}}</p>
+</div>
+
+<div class="vehicle-details-container">
+    <div id="message-container" *ngIf="message">{{message.message}}</div>
+    <div class="vehicle-card">
+        <h2 class="vehicle-name">{{ vehicleName }}</h2>
+
+        <div class="vehicle-info">
+            <div class="info-row">
+                <span class="info-label">Vehicle Type:</span>
+                <span class="info-value">{{ vehicleType }}</span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">Brand:</span>
+                <span class="info-value">{{ brand }}</span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">Rent per Day:</span>
+                <span class="info-value">₹{{ rentPerDay }}</span>
+            </div>
+        </div>
+
+        <div class="vehicle-description">
+            <h3>Description</h3>
+            <p>{{ description }}</p>
+        </div>
+
+        <form [formGroup]="requestForm" (ngSubmit)="sendRequest()">
+            <div class="form-group">
+                <label for="startDate">Start Date <span class="invalid-feedback">*</span></label>
+                <input type="date" id="" formControlName="startDate" class="form-control"
+                    (change)="requestForm.markAsTouched()">
+                <div class="invalid-feedback"
+                    *ngIf="requestForm.get('startDate')?.invalid && requestForm.get('startDate')?.touched">
+                    Start Date is required!
+                </div>
+                <div class="invalid-feedback"
+                    *ngIf="requestForm.get('startDate')?.errors?.['startdateNotValid'] && requestForm.get('startDate')?.touched">
+                    Select a valid date!
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="endDate">End Date <span class="invalid-feedback">*</span></label>
+                <input type="date" id="endDate" formControlName="endDate" class="form-control">
+                <div class="invalid-feedback"
+                    *ngIf="requestForm.get('endDate')?.invalid && requestForm.get('endDate')?.touched">
+                    End Date is required!
+                </div>
+                <div class="invalid-feedback"
+                    *ngIf="requestForm.get('endDate')?.errors?.['endDateNotAfterStartDate'] && requestForm.get('endDate')?.touched">
+                    End Date must be after the Start Date!
+                </div>
+            </div>
+
+            <button class="send-request-btn" type="submit">
+                Send Request
+            </button>
+        </form>
+    </div>
+</div>
+
+<button class="floating-button" (click)="viewList()">View List</button>

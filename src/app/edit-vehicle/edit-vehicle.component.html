@@ -1,0 +1,88 @@
+<div class="form-container">
+    <h2>Edit Vehicle</h2>
+
+    <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+        <!-- Vehicle Name -->
+        <div class="form-group">
+            <label for="vehicleName">Vehicle Name <span class="error"> *</span></label>
+            <input id="vehicleName" type="text" formControlName="vehicleName"
+                [class.invalid]="vehicleForm.get('vehicleName')?.invalid && vehicleForm.get('vehicleName')?.touched" />
+            <small
+                *ngIf="vehicleForm.get('vehicleName')?.hasError('required') && vehicleForm.get('vehicleName')?.touched">
+                Vehicle Name is required.
+            </small>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label for="description">Description <span class="error"> *</span></label>
+            <textarea id="description" formControlName="description"
+                [class.invalid]="vehicleForm.get('description')?.invalid && vehicleForm.get('description')?.touched">
+        </textarea>
+            <small
+                *ngIf="vehicleForm.get('description')?.hasError('required') && vehicleForm.get('description')?.touched">
+                Description is required.
+            </small>
+        </div>
+
+        <!-- Vehicle Type -->
+        <div class="form-group">
+            <label for="vehicleType">Vehicle Type <span class="error"> *</span></label>
+            <select id="vehicleType" formControlName="vehicleType">
+                <option value="">Select Type</option>
+                <option *ngFor="let type of vehicleTypes" [ngValue]="type">{{ type.vehicleType }}</option>
+            </select>
+            <small
+                *ngIf="vehicleForm.get('vehicleType')?.hasError('required') && vehicleForm.get('vehicleType')?.touched">
+                Vehicle Type is required.
+            </small>
+        </div>
+
+        <!-- Brand -->
+        <div class="form-group">
+            <label for="brand">Brand <span class="error"> *</span></label>
+            <select id="brand" formControlName="brand">
+                <option value="">Select Brand</option>
+                <option *ngFor="let brand of brands" [ngValue]="brand">{{ brand.vehicleBrand }}</option>
+            </select>
+            <small *ngIf="vehicleForm.get('brand')?.hasError('required') && vehicleForm.get('brand')?.touched">
+                Brand is required.
+            </small>
+        </div>
+
+
+        <!-- Rent -->
+        <div class="form-group">
+            <label for="rent">Rent (per day) <span class="error"> *</span></label>
+            <input id="rent" type="number" formControlName="rent"
+                [class.invalid]="vehicleForm.get('rent')?.invalid && vehicleForm.get('rent')?.touched" />
+            <small *ngIf="vehicleForm.get('rent')?.hasError('required') && vehicleForm.get('rent')?.touched">
+                Rent is required.
+            </small>
+            <small *ngIf="vehicleForm.get('rent')?.hasError('min') && vehicleForm.get('rent')?.touched">
+                Rent must be greater than zero.
+            </small>
+        </div>
+
+        <!-- Availability -->
+        <div class="form-group">
+            <label for="availability">Availability <span class="error"> *</span></label>
+            <select id="availability" formControlName="availability">
+                <option value="">Select Availability</option>
+                <option value="True">Available</option>
+                <option value="False">Rented</option>
+            </select>
+            <small
+                *ngIf="vehicleForm.get('availability')?.hasError('required') && vehicleForm.get('availability')?.touched">
+                Availability is required.
+            </small>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Save Vehicle</button>
+        <br><br>
+        <button style="background-color: rgb(71, 138, 226);" (click)="backToAdminPanel()">Cancel</button>
+    </form>
+    <small style="color: rgb(65, 65, 65);"><span class="error"> *</span> fields cannot be left blank</small>
+</div>
+

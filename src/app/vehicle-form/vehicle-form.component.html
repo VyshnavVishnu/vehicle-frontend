@@ -1,0 +1,65 @@
+<div id="message-container" *ngIf="message">
+  <p class="fade-message">{{message.message}}</p>
+</div>
+
+<div class="vehicle-form-container">
+    <h2>Vehicle Registration Form</h2>
+    
+    <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()" class="vehicle-form">
+      
+      <!-- Vehicle Name -->
+      <div class="form-group">
+        <label for="vehicleName">Vehicle Name <span class="error"> *</span></label>
+        <input id="vehicleName" formControlName="vehicleName" class="form-control" type="text" placeholder="e.g., Toyota Corolla">
+        <div class="invalid-feedback" *ngIf="vehicleForm.get('vehicleName')?.touched && vehicleForm.get('vehicleName')?.invalid">
+          Vehicle Name is required and must be at least 3 characters long.
+        </div>
+      </div>
+      
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Description <span class="error"> *</span></label>
+        <textarea id="description" formControlName="description" class="form-control" placeholder="e.g., Red, 4-door sedan" rows="3"></textarea>
+        <div class="invalid-feedback" *ngIf="vehicleForm.get('description')?.touched && vehicleForm.get('description')?.invalid">
+          Description is required.
+        </div>
+      </div>
+      
+      <!-- Vehicle Type -->
+      <div class="form-group">
+        <label for="vehicleType">Vehicle Type <span class="error"> *</span></label>
+        <select id="vehicleType" formControlName="vehicleType" class="form-control">
+          <option value="" disabled>Select Vehicle Type</option>
+          <option *ngFor="let vehicle of vehicleTypes" [value]="vehicle.id">{{vehicle.vehicleType}}</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="vehicleForm.get('vehicleType')?.touched && vehicleForm.get('vehicleType')?.invalid">
+          Vehicle Type is required.
+        </div>
+      </div>
+      
+      <!-- Brand -->
+      <div class="form-group">
+        <label for="brand">Brand <span class="error"> *</span></label>
+        <select id="brand" formControlName="brand" class="form-control">
+          <option value="" disabled>Select Brand</option>
+          <option *ngFor="let vehicle of vehicleBrands" [value]="vehicle.id">{{vehicle.vehicleBrand}}</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="vehicleForm.get('brand')?.touched && vehicleForm.get('brand')?.invalid">
+          Brand is required.
+        </div>
+      </div>
+      
+      <!-- Rent Per Day -->
+      <div class="form-group">
+        <label for="rentPerDay">Rent Per Day <span class="error"> *</span></label>
+        <input id="rentPerDay" formControlName="rentPerDay" class="form-control" type="number" placeholder="Price per day">
+        <div class="invalid-feedback" *ngIf="vehicleForm.get('rentPerDay')?.touched && vehicleForm.get('rentPerDay')?.invalid">
+          Rent Per Day must be a positive number.
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  
+  <button class="floating-button" (click)="viewList()">View List</button>

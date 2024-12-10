@@ -1,0 +1,84 @@
+.tables-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.table-wrapper {
+    width: 45%; /* Adjust width as needed */
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #333;
+}
+
+.rentals-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rentals-table th,
+.rentals-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+}
+
+.rentals-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.rentals-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.rentals-table tr:hover {
+    background-color: #e9f7fe;
+}
+
+/* Floating Button Styles */
+.floating-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.floating-btn:hover {
+    background-color: #0056b3;
+}
+
+.floating-btn:focus {
+    outline: none;
+}
+
+.no-rentals-msg {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    padding: 20px;
+    font-size: 30px;
+    height: 100px;
+}

@@ -1,0 +1,229 @@
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .add-btn {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-btn:hover {
+    background-color: #45a049;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  input {
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 6px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .edit-btn {
+    background-color: #2196F3;
+    color: white;
+    margin: 5px;
+  }
+  
+  .edit-btn:hover {
+    background-color: #0b7dda;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+    color: white;
+    margin: 5px;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d32f2f;
+  }
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal content */
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Buttons */
+  .button-group {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-yes {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .btn-yes:hover {
+    background-color: #218838;
+  }
+  
+  .btn-no {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-no:hover {
+    background-color: #c82333;
+  }
+
+  .floating-button {
+    position: fixed;
+    top: 10px;
+    /* Adjust vertical position */
+    right: 10px;
+    /* Adjust horizontal position */
+    z-index: 1000;
+    /* Ensure the button stays on top */
+    padding: 10px 20px;
+    background-color: #007BFF;
+    /* Button background color */
+    color: white;
+    /* Text color */
+    border: none;
+    /* Remove default border */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-size: 16px;
+    /* Font size */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Add depth with shadow */
+    transition: background-color 0.3s ease;
+    /* Smooth hover effect */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .floating-button:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9f6; /* Light background */
+    color: #343a40; /* Darker text for contrast */
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd; /* Subtle border */
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40; /* Dark color for the logo */
+  }
+  
+  .nav-buttons button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    background-color: #e9ecef; /* Light button background */
+    color: #343a40; /* Dark button text */
+    border: 1px solid #ced4da; /* Subtle border for buttons */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .nav-buttons button:hover {
+    background-color: #888888; /* Slightly darker on hover */
+    color: #212529; /* Slightly darker text on hover */
+  }
+  
+  .nav-buttons button:active {
+    transform: scale(0.98);
+  }
+
+  .form-group select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.form-group select:focus {
+    border-color: #007bff; /* Highlight color when focused */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus shadow */
+}
+
+/* Container Styling */
+.filter-options {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px; /* Space between filter dropdowns */
+    align-items: center;
+    flex-wrap: wrap; /* Ensure wrapping on smaller screens */
+    margin-bottom: 20px;
+}

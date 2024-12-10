@@ -1,0 +1,72 @@
+<nav class="navbar">
+  <div class="logo">AutoWay Hire</div>
+  <div class="nav-buttons">
+      <button (click)="userRentals()">View My Rentals</button>
+      <button (click)="logout()">Logout</button>
+  </div>
+</nav>
+
+<div class="vehicle-table-container">
+    <form [formGroup]="filterForm" class="filter-form">
+      <!-- Vehicle Type Dropdown -->
+      <div class="form-group">
+        <label for="vehicleType">Vehicle Type</label>
+        <select formControlName="vehicleType" (change)="checkFilter()">
+            <option value="">All Vehicle Types</option>
+            <option *ngFor="let type of vehicleTypes" [value]="type.id">
+              {{type.vehicleType}}
+            </option>
+          </select>
+      </div>
+  
+      <!-- Brand Dropdown -->
+      <div class="form-group">
+        <label for="brand">Brand</label>
+        <select formControlName="brand" (change)="checkFilter()">
+            <option value="">All Brands</option>
+            <option *ngFor="let brand of brands" [value]="brand.id">
+              {{brand.vehicleBrand}}
+            </option>
+          </select>
+      </div>
+    </form>
+  
+    <table class="vehicle-table">
+      <thead>
+        <tr>
+          <th>Vehicle Name</th>
+          <th>Rent</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="!filterForm.get('vehicleType')?.value && !filterForm.get('brand')?.value">
+        <tr *ngFor="let vehicle of allVehicles">
+          <td>{{vehicle.vehicleName}}</td>
+          <td>{{vehicle.rent}}</td>
+          <td>
+            <button (click)="viewVehicleDetails(vehicle.id)" 
+                    class="btn-view">
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="filterForm.get('vehicleType')?.value || filterForm.get('brand')?.value">
+        <tr *ngFor="let vehicle of filteredVehicles">
+          <td>{{vehicle.vehicleName}}</td>
+          <td>{{vehicle.rent}}</td>
+          <td>
+            <button (click)="viewVehicleDetails(vehicle.id)" 
+                    class="btn-view">
+              View
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="filteredVehicles.length === 0">
+          <td colspan="4" class="no-data">
+            No vehicles found
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

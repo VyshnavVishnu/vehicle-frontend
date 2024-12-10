@@ -1,0 +1,27 @@
+<div class="body">
+    <button class="floating-button" (click)="backToAdminPanel()">Main Page</button>
+    <header class="header">
+        <h1>Rental Requests</h1>
+    </header>
+    <main class="container" *ngIf="allRequests.length>0">
+        <table class="rental-table">
+            <tr>
+                <th>Customer Name</th>
+                <th>Vehicle Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>View</th>
+            </tr>
+            <tr *ngFor="let req of allRequests">
+                <td>{{req.user}}</td>
+                <td>{{req.vehicle}}</td>
+                <td>{{ req.startDate | date:'dd-MM-yyyy' }}</td>
+                <td>{{ req.endDate | date:'dd-MM-yyyy' }}</td>
+                <td><button class="view-btn" (click)="viewRequest(req.id)">View</button></td>
+            </tr>
+        </table>
+    </main>
+    <div *ngIf="allRequests.length<1">
+        <span>No Pending Requests</span>
+    </div>
+</div>

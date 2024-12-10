@@ -1,0 +1,99 @@
+<nav class="navbar">
+    <div class="logo">AutoWay Hire</div>
+    <div class="nav-buttons">
+        <button (click)="addVehicle()">Add Vehicle</button>
+        <button (click)="viewRequests()">View Rental Requests</button>
+        <button (click)="logout()">Logout</button>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>Vehicle Management</h2>
+
+    <form [formGroup]="filterForm" class="filter-form">
+        <div class="filter-options">
+            <!-- Vehicle Type Dropdown -->
+            <div class="form-group">
+                <label for="vehicleType">Vehicle Type</label>
+                <select id="vehicleType" formControlName="vehicleType" (change)="applyFilters()">
+                    <option value="">All Vehicle Types</option>
+                    <option *ngFor="let type of vehicleTypes" [value]="type.id">
+                        {{type.vehicleType}}
+                    </option>
+                </select>
+            </div>
+
+            <!-- Brand Dropdown -->
+            <div class="form-group">
+                <label for="brand">Brand</label>
+                <select id="brand" formControlName="brand" (change)="applyFilters()">
+                    <option value="">All Brands</option>
+                    <option *ngFor="let brand of brands" [value]="brand.id">
+                        {{brand.vehicleBrand}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </form>
+
+    <!-- Vehicles Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Rent Per Day</th>
+                <th>Availability</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="!filterForm.get('vehicleType')?.value && !filterForm.get('brand')?.value">
+            <tr *ngFor="let vehicle of availableVehicles">
+                <td>{{vehicle.vehicleName}}</td>
+                <td>{{vehicle.brand}}</td>
+                <td>{{vehicle.description}}</td>
+                <td>{{vehicle.vehicleType}}</td>
+                <td>₹{{vehicle.rent}}</td>
+                <td>{{ vehicle.availability ? "Available" : "Rented" }}</td>
+                <td>
+                    <button class="edit-btn" (click)="editVehicle(vehicle.id)">Edit</button><br>
+                    <button class="delete-btn" (click)="openModal(vehicle.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="filterForm.get('vehicleType')?.value || filterForm.get('brand')?.value">
+            <tr *ngFor="let vehicle of filteredVehicles">
+                <td>{{vehicle.vehicleName}}</td>
+                <td>{{vehicle.brand}}</td>
+                <td>{{vehicle.description}}</td>
+                <td>{{vehicle.vehicleType}}</td>
+                <td>₹{{vehicle.rent}}</td>
+                <td>{{ vehicle.availability ? "Available" : "Rented" }}</td>
+                <td>
+                    <button class="edit-btn" (click)="editVehicle(vehicle.id)">Edit</button><br>
+                    <button class="delete-btn" (click)="openModal(vehicle.id)">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="filteredVehicles.length === 0">
+                <td colspan="7" class="no-data">
+                    No vehicles found
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal" id="deleteModal" [ngClass]="{ 'show': isModalOpen }">
+    <div class="modal-content">
+        <p>Are you sure you want to delete this Vehicle?</p>
+        <div class="button-group">
+            <button class="btn btn-yes" (click)="onConfirm()">Yes</button>
+            <button class="btn btn-no" (click)="closeModal()">No</button>
+        </div>
+    </div>
+</div>
